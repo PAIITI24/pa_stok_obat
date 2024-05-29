@@ -29,7 +29,7 @@ func (S *adreqbody) UnmarshalJSON(bts []byte) (err error) {
 		return err
 	}
 
-	expDate, err := time.Parse("02-01-2006", aux.ExpiredDate)
+	expDate, err := time.Parse("02/01/2006", aux.ExpiredDate)
 	if err != nil {
 		return err
 	}

@@ -143,3 +143,33 @@ func ReduceStok(ctx *fiber.Ctx) error {
 		"record_info": newOutRecord,
 	})
 }
+
+func ListStokMasuk(ctx *fiber.Ctx) error {
+	var stokMasukList []model.StokMasuk
+
+	// Fetch the list of stock additions, ordered by their creation date
+	err := db.Order("created_at desc").Find(&stokMasukList).Error
+	if err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"status_code": fiber.StatusInternalServerError,
+			"error":       err,
+		})
+	}
+
+	return ctx.Status(fiber.StatusOK).JSON(stokMasukList)
+}
+
+func ListStokKeluar(ctx *fiber.Ctx) error {
+	var stokKeluarList []model.StokKeluar
+
+	// Fetch the list of stock reductions, ordered by their creation date
+	err := db.Order("created_at desc").Find(&stokKeluarList).Error
+	if err != nil {
+		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"status_code": fiber.StatusInternalServerError,
+			"error":       err,
+		})
+	}
+
+	return ctx.Status(fiber.StatusOK).JSON(stokKeluarList)
+}

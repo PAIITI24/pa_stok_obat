@@ -15,8 +15,12 @@ func main() {
 			AppName:   "Stok_Management_Obat",
 		})
 
-	srv.Put("/obat/stok/add", controller.AddStok)
-	srv.Put("/obat/stok/reduce", controller.ReduceStok)
+	stokGroup := srv.Group("/obat/stok")
+
+	stokGroup.Put("/add", controller.AddStok)
+	stokGroup.Put("/reduce", controller.ReduceStok)
+	stokGroup.Get("/add/history", controller.ListStokMasuk)
+	stokGroup.Get("/reduce/history", controller.ListStokKeluar)
 
 	err := srv.Listen(":3010")
 

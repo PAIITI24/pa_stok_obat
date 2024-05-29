@@ -8,7 +8,18 @@ Content-Type: application/json
 
 
 {
-  "obat_id": 1,
+  "obat_id": 10,
   "amount": 10,
   "expired_date": "19-12-2025"
 }
+###
+
+PUT localhost:3010/obat/stok/add
+Accept: application/json
+Content-Type: application/json
+
+//ObatID      int       `json:"obat_id"`
+//Amount      uint      `json:"amount"`
+//ExpiredDate time.Time `json:"expired_date"`
+
+{"obat_id":11,"amount":10,"expired_date":"19/09/2024"}
