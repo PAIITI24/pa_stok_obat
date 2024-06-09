@@ -22,4 +22,25 @@ Content-Type: application/json
 //Amount      uint      `json:"amount"`
 //ExpiredDate time.Time `json:"expired_date"`
 
-{"obat_id":11,"amount":10,"expired_date":"19/09/2024"}
+{"obat_id":11,"amount":30,"expired_date":"19/09/2024"}
+
+
+###
+PUT localhost:3010/obat/stok/reduce
+Accept: application/json
+Content-Type: application/json
+Authorization: abc123
+
+//ObatID      int       `json:"obat_id"`
+//Amount      uint      `json:"amount"`
+//ExpiredDate time.Time `json:"expired_date"`
+
+
+{
+"obat_id": 11,
+"stok_masuk_id" : 6,
+"amount": 29,
+"expired_date": "19-12-2025"
+}
+###
+GET localhost:3010/obat/stok/reduce/history/1

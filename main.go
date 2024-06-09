@@ -21,6 +21,8 @@ func main() {
 	stokGroup.Put("/reduce", controller.ReduceStok)
 	stokGroup.Get("/add/history", controller.ListStokMasuk)
 	stokGroup.Get("/reduce/history", controller.ListStokKeluar)
+	stokGroup.Get("/add/history/:id", controller.ListStokMasukOfObat)
+	stokGroup.Get("/reduce/history/:id", controller.ListStokKeluarOfObat)
 
 	err := srv.Listen(":3010")
 

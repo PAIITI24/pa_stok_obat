@@ -16,12 +16,14 @@ type StokMasuk struct {
 }
 
 type StokKeluar struct {
-	ID         int       `json:"id" gorm:"primary_key;auto_increment"`
-	StokKeluar uint      `json:"stok_keluar"`
-	CreatedAt  time.Time `json:"created_at" gorm:"autoCreateTime" db:"created_at"`
-	UpdatedAt  time.Time `json:"updated_at" gorm:"autoUpdateTime" db:"updated_at"`
-	ObatID     int       `json:"obat_id"`
-	Obat       Obat      `json:"obat,omitempty" gorm:"foreignKey:ObatID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
+	ID          int       `json:"id" gorm:"primary_key;auto_increment"`
+	StokKeluar  uint      `json:"stok_keluar"`
+	CreatedAt   time.Time `json:"created_at" gorm:"autoCreateTime" db:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at" gorm:"autoUpdateTime" db:"updated_at"`
+	StokMasukID int       `json:"stok_masuk_id"`
+	StokMasuk   StokMasuk `json:"stok_masuk" gorm:"foreignKey:StokMasukID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
+	ObatID      int       `json:"obat_id"`
+	Obat        Obat      `json:"obat,omitempty" gorm:"foreignKey:ObatID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 }
 
 func (S *StokMasuk) MarshalJSON() ([]byte, error) {
